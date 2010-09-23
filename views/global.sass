@@ -1,0 +1,178 @@
+//Palette
+
+$white: #FFFDFD
+$light_gray: #EEECEC
+$dark_gray: #888686 
+$black: #030000
+$blue : #1999CE
+$dark_blue : #106689
+
+
+
+// Global
+
+body
+	background: $light_gray
+	font-family: Helvetica
+	margin: 0
+	padding: 0
+
+h1, h2, h3, h4, h5
+	margin: 0.5em 0
+
+h1
+	font-size: 24px
+	letter-spacing: -0.03em
+	color: $white
+
+h2
+	font-size: 30px
+	letter-spacing: -0.04em
+
+h3
+	font-size: 24px
+	letter-spacing: -0.03em
+	margin-bottom: 1em
+	color: $blue
+
+h4
+	font-size: 20px
+	letter-spacing: -0.03em
+		
+a
+	text-decoration: none
+	color: $blue
+	&:hover
+		background: $light_gray
+
+p.note
+	color: $dark_gray
+	font-size: 0.85em
+
+//Mixins
+
+@mixin clear
+	overflow: hidden
+
+@mixin round-corners($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	-khtml-border-radius: $radius
+	border-radius: $radius
+	padding: $radius
+
+@mixin layout($columns, $width, $padding)
+	width: $width/$columns - $padding
+	padding-right: $padding 
+	float: left
+
+@mixin box-shadow($value)
+	-moz-box-shadow: $value  
+	-webkit-box-shadow: $value
+	box-shadow: $value
+
+// Layout
+
+#top
+	background: $blue
+	color: $white
+	#top-content
+		@include clear
+		width: 960px
+		margin: 0 auto
+		h1
+			float: left
+		#menu
+			float: right
+			min-width: 10px
+			@include clear
+			li
+				float: left
+				margin-left: 20px
+				list-style: none
+				a
+					color: $white
+					&:hover
+						color: $light_gray
+						
+#header
+	padding: 0 30px
+	width: 900px
+	margin: 0 auto
+								
+#content
+	@include round-corners(8px)
+	background: $white
+	border: 1px solid $dark_gray
+	padding: 30px	
+	width: 900px
+	margin: 0 auto
+	
+
+#footer
+	margin-top: 30px
+	text-align: center
+	
+//New
+
+
+fieldset
+	margin: 0
+	padding: 0
+	border: none
+
+p.row
+	@include clear
+
+label
+	display: block
+	float: left
+	min-width: 150px
+	line-height: 2em
+
+input
+	font-size: 18px
+
+input.text
+	border: 1px solid $dark_gray
+	@include round-corners(5px)
+	
+input.submit
+	background: $blue
+	color: $white
+	border: 1px solid $white
+	@include round-corners(5px)
+	&:hover
+		cursor: pointer
+		background: $dark_blue
+
+//Show
+
+#show
+
+	span.label
+		display: block
+		float: left
+		min-width: 150px
+		color: $dark_gray
+
+	span.text
+		font-weight: bold
+
+	.actions
+		width: 100%
+		background: $light_gray
+		padding: 5px 10px
+		margin-bottom: 10px
+		
+		#actions_content
+			float: right
+			@include clear
+	
+	a.button
+		display: block
+		float: left
+		margin-left: 20px
+		&:hover
+			color: $dark_blue
+			

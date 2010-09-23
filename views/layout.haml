@@ -1,0 +1,28 @@
+!!! Strict
+%html{:xmlns => 'http://www.w3.org/1999/xhtml'}
+	%head
+		%title
+			= @title || 'Knowsy Administration'
+		%meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+		%link{:rel => 'stylesheet', :href => '/global.css', :type => 'text/css', :media => 'all'}
+	%body
+		#top
+			#top-content
+				%h1 Knowsy Administration
+				%ul#menu
+					%li 
+						%a{:href => "/"}
+							Back to Main Menu
+					%li 
+						%a{:href => "/"}
+							Sign In
+		#header
+			%h2 
+				=@title
+		#content
+			= yield
+		#footer
+			%img{:src => "/images/innovgames_logo.png", :alt => "The Innovation Games Company"}
+			%p.note
+				Innovation Games® and Knowsy® are trademarks of The Innovation Games® Company. 
+				
