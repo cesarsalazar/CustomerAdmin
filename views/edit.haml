@@ -1,26 +1,36 @@
-%h3
-	=@subtitle
-%form{:method => 'POST'}
-	%fieldset
-		%h4 Organization 
-		%p.row
-			%label Name
-			%input.text{:type => 'text', :name => 'company_name', :value => "#{@sponsor.company_name}"}
-	%fieldset
-		%h4 Contact
-		%p.row
-			%label First Name
-			%input.text{:type => 'text', :name => 'first_name', :value => "#{@sponsor.first_name}"}
-		%p.row
-			%label Last Name
-			%input.text{:type => 'text', :name => 'last_name', :value => "#{@sponsor.last_name}"}
-		%p.row
-			%label Email Address
-			%input.text{:type => 'text', :name => 'email', :value => "#{@sponsor.email}"}
-		%p.row
-			%label Phone Number
-			%input.text{:type => 'text', :name => 'phone', :value => "#{@sponsor.phone}"}
-	%fieldset
-		%p.row	
-			%label &nbsp
-			%input.submit{:type => 'submit', :value => "Update"}
+#header
+	%h2
+		=@title
+	#subnav	
+		%a{:href=>"/sponsors"}
+			Show all
+#content
+	%h3
+		%span.label
+			Edit:
+		%a{:href => "/sponsor/show/#{@sponsor.id}"}
+			=@subtitle
+	%form{:method => 'POST'}
+		%fieldset
+			%h4 Organization 
+			%p.row
+				%label Name
+				%input.text{:type => 'text', :name => 'company_name', :value => "#{@sponsor.company_name}"}
+		%fieldset
+			%h4 Contact
+			%p.row
+				%label First Name
+				%input.text{:type => 'text', :name => 'first_name', :value => "#{@sponsor.first_name}"}
+			%p.row
+				%label Last Name
+				%input.text{:type => 'text', :name => 'last_name', :value => "#{@sponsor.last_name}"}
+			%p.row
+				%label Email Address
+				%input.text{:type => 'text', :name => 'email', :value => "#{@sponsor.email}"}
+			%p.row
+				%label Phone Number
+				%input.text{:type => 'text', :name => 'phone', :value => "#{@sponsor.phone}"}
+		%fieldset
+			%p.row	
+				%label &nbsp
+				%input.submit{:type => 'submit', :value => "Update"}

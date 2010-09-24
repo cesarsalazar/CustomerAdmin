@@ -1,0 +1,24 @@
+#header
+	%h2 
+		=@title
+#content
+	%h3 
+		=@subtitle
+	#show
+		%fieldset.actions
+			#actions_content
+				%a.button{:href => "/sponsor/new" } Create new sponsor
+		%table
+			%thead
+				%td.id	ID
+				%td.company_name	Company Name
+				%td.email	Email
+			- @sponsors.each do |sponsor|
+				%tr
+					%td 
+						=sponsor.id
+					%td
+						%a{:href => "/sponsor/show/#{sponsor.id}"}
+							=sponsor.company_name
+					%td
+						=sponsor.email

@@ -16,11 +16,7 @@
 					%li 
 						%a{:href => "/"}
 							Sign In
-		#header
-			%h2 
-				=@title
-		#content
-			= yield
+		= yield
 		#footer
 			%img{:src => "/images/innovgames_logo.png", :alt => "The Innovation Games Company"}
 			%p.note

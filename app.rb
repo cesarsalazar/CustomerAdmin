@@ -36,6 +36,7 @@ end
 get '/sponsors' do
   @sponsors = Sponsor.all
   @title = "Sponsors"
+  @subtitle = "List all"
   haml :list
 end
 
@@ -56,7 +57,7 @@ post '/sponsor/new' do
                         ) 
   if @sponsor.save
     @message = "Succesfully saved new sponsor"
-    redirect "/sponsor/show/{#{@sponsor.id}}"
+    redirect "/sponsor/show/#{@sponsor.id}"
   else
     redirect "/sponsor/new"
   end
@@ -76,14 +77,30 @@ end
 get '/sponsor/edit/:id' do  
   @sponsor = Sponsor.get(params[:id])
   @title = "Sponsors"
-  @subtitle = "Edit: #{@sponsor.company_name}"
+  @subtitle = "#{@sponsor.company_name}"
   haml :edit
+end
+
+post '/sponsor/edit/:id' do 
+  @sponsor = Sponsor.get(params[:id])
+  @sponsor.company_name = params[:company_name]
+  @sponsor.first_name = params[:first_name]
+  @sponsor.last_name = params[:last_name]
+  @sponsor.email = params[:email]
+  @sponsor.phone = params[:phone]
+  if @sponsor.save
+      @message = "Succesfully saved new sponsor"
+      redirect "/sponsor/show/#{@sponsor.id}"
+  else
+    redirect "/sponsor/edit/#{@sponsor.id}"
+  end
 end
 
 #DELETE
 
-get '/sponsor/edit/:id' do
-  if  @sponsor = Sponsor.delete(params[:id])
+get '/sponsor/delete/:id' do
+  @sponsor = Sponsor.get(params[:id])
+  if @sponsor.destroy!
     redirect "/sponsors"
   else
     redirect "/sponsor/show/{#{@sponsor.id}}"

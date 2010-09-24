@@ -32,8 +32,9 @@ h2
 h3
 	font-size: 24px
 	letter-spacing: -0.03em
-	margin-bottom: 1em
 	color: $blue
+	.label
+		color: $dark_gray
 
 h4
 	font-size: 20px
@@ -93,12 +94,19 @@ p.note
 				a
 					color: $white
 					&:hover
+						background: transparent
 						color: $light_gray
 						
 #header
 	padding: 0 30px
 	width: 900px
 	margin: 0 auto
+	@include clear
+	h2
+		float: left
+		margin-right: 30px
+	#subnav
+		margin-top: 25px
 								
 #content
 	@include round-corners(8px)
@@ -113,7 +121,7 @@ p.note
 	margin-top: 30px
 	text-align: center
 	
-//New
+//New 
 
 
 fieldset
@@ -175,4 +183,21 @@ input.submit
 		margin-left: 20px
 		&:hover
 			color: $dark_blue
-			
+
+//List
+
+table
+	border-collapse: collapse
+	thead
+		font-weight: bold
+		border-bottom: 1px solid $dark_gray
+		line-height: 2em
+	tr
+		line-height: 2em
+	td.id
+		min-width: 100px
+	td.company_name
+		min-width: 300px
+	td.email
+		min-width: 100px
+		

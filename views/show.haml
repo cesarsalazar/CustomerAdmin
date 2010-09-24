@@ -1,31 +1,38 @@
-%h3
-	=@subtitle
-#show
-	%fieldset.actions
-		#actions_content
-			%a.button{:href => "/sponsor/edit/#{@sponsor.id}" } Edit
-			%a.button{:href => "/sponsor/delete/#{@sponsor.id}" } Delete
-	%fieldset
-		%h4 Organization 
-		%p.row
-			%span.label ID
-			%span.text 
-				=@sponsor.id
-	%fieldset
-		%h4 Contact
-		%p.row
-			%span.label First Name
-			%span.text 
-				=@sponsor.first_name
-		%p.row
-			%span.label Last Name
-			%span.text 
-				=@sponsor.last_name
-		%p.row
-			%span.label Email Address
-			%span.text 
-				=@sponsor.email
-		%p.row
-			%span.label Phone Number
-			%span.text 
-				=@sponsor.phone
+#header
+	%h2 
+		=@title
+	#subnav	
+		%a{:href=>"/sponsors"}
+			Show all
+#content
+	%h3
+		=@subtitle
+	#show
+		%fieldset.actions
+			#actions_content
+				%a.button{:href => "/sponsor/edit/#{@sponsor.id}" } Edit
+				%a.button{:href => "/sponsor/delete/#{@sponsor.id}" } Delete
+		%fieldset
+			%h4 Organization 
+			%p.row
+				%span.label ID
+				%span.text 
+					=@sponsor.id
+		%fieldset
+			%h4 Contact
+			%p.row
+				%span.label First Name
+				%span.text 
+					=@sponsor.first_name
+			%p.row
+				%span.label Last Name
+				%span.text 
+					=@sponsor.last_name
+			%p.row
+				%span.label Email Address
+				%span.text 
+					=@sponsor.email
+			%p.row
+				%span.label Phone Number
+				%span.text 
+					=@sponsor.phone
