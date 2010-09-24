@@ -7,18 +7,18 @@
 	#show
 		%fieldset.actions
 			#actions_content
-				%a.button{:href => "/sponsor/new" } Create new sponsor
+				%a.button{:href => "/customer/new" } Create new customer
 		%table
 			%thead
 				%td.id	ID
 				%td.company_name	Company Name
 				%td.email	Email
-			- @sponsors.each do |sponsor|
+			- @customers.each do |customer|
 				%tr
 					%td 
-						=sponsor.id
+						=customer.id
 					%td
-						%a{:href => "/sponsor/show/#{sponsor.id}"}
-							=sponsor.company_name
+						%a{:href => "/customer/show/#{customer.id}"}
+							=customer.company_name
 					%td
-						=sponsor.email
+						=customer.email

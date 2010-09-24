@@ -7,9 +7,9 @@ require 'dm-timestamps'
 require 'haml'
 require 'sass'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/knowsy-admin.sqlite3")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/customer-admin.sqlite3")
 
-class Sponsor
+class Customer
   include DataMapper::Resource
 
   property :id,             Serial   
@@ -33,77 +33,77 @@ end
 
 #LIST
 
-get '/sponsors' do
-  @sponsors = Sponsor.all
-  @title = "Sponsors"
+get '/customers' do
+  @customers = Customer.all
+  @title = "Customers"
   @subtitle = "List all"
   haml :list
 end
 
 #NEW
 
-get '/sponsor/new' do
-  @title = "Sponsors"
-  @subtitle = "Create new sponsor"
+get '/customer/new' do
+  @title = "Customers"
+  @subtitle = "Create new customer"
   haml :new
 end
 
-post '/sponsor/new' do
-  @sponsor = Sponsor.new( :company_name => params[:company_name],
+post '/customer/new' do
+  @customer = Customer.new( :company_name => params[:company_name],
                           :first_name => params[:first_name],
                           :last_name => params[:last_name],
                           :email => params[:email],
                           :phone => params[:phone]
                         ) 
-  if @sponsor.save
-    @message = "Succesfully saved new sponsor"
-    redirect "/sponsor/show/#{@sponsor.id}"
+  if @customer.save
+    @message = "Succesfully saved new customer"
+    redirect "/customer/show/#{@customer.id}"
   else
-    redirect "/sponsor/new"
+    redirect "/customer/new"
   end
 end
 
 #SHOW
 
-get '/sponsor/show/:id' do
-  @sponsor = Sponsor.get(params[:id])
-  @title = "Sponsors"
-  @subtitle = "#{@sponsor.company_name}"
+get '/customer/show/:id' do
+  @customer = Customer.get(params[:id])
+  @title = "Customers"
+  @subtitle = "#{@customer.company_name}"
   haml :show
 end
 
 #EDIT
 
-get '/sponsor/edit/:id' do  
-  @sponsor = Sponsor.get(params[:id])
-  @title = "Sponsors"
-  @subtitle = "#{@sponsor.company_name}"
+get '/customer/edit/:id' do  
+  @customer = Customer.get(params[:id])
+  @title = "Customers"
+  @subtitle = "#{@customer.company_name}"
   haml :edit
 end
 
-post '/sponsor/edit/:id' do 
-  @sponsor = Sponsor.get(params[:id])
-  @sponsor.company_name = params[:company_name]
-  @sponsor.first_name = params[:first_name]
-  @sponsor.last_name = params[:last_name]
-  @sponsor.email = params[:email]
-  @sponsor.phone = params[:phone]
-  if @sponsor.save
-      @message = "Succesfully saved new sponsor"
-      redirect "/sponsor/show/#{@sponsor.id}"
+post '/customer/edit/:id' do 
+  @customer = Customer.get(params[:id])
+  @customer.company_name = params[:company_name]
+  @customer.first_name = params[:first_name]
+  @customer.last_name = params[:last_name]
+  @customer.email = params[:email]
+  @customer.phone = params[:phone]
+  if @customer.save
+      @message = "Succesfully edited this customer"
+      redirect "/customer/show/#{@customer.id}"
   else
-    redirect "/sponsor/edit/#{@sponsor.id}"
+    redirect "/customer/edit/#{@customer.id}"
   end
 end
 
 #DELETE
 
-get '/sponsor/delete/:id' do
-  @sponsor = Sponsor.get(params[:id])
-  if @sponsor.destroy!
-    redirect "/sponsors"
+get '/customer/delete/:id' do
+  @customer = Customer.get(params[:id])
+  if @customer.destroy!
+    redirect "/customers"
   else
-    redirect "/sponsor/show/{#{@sponsor.id}}"
+    redirect "/customer/show/{#{@customer.id}}"
   end
 end
 
